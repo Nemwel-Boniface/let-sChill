@@ -43,10 +43,28 @@
     </header>
 
     <main class="main">
-      <div class="image-container">
-
-      </div>
+      <div class="image-container"></div>
     </main>
+
+    <section class="comment-main-container">
+      <form action="POST" class="comment-form dn">
+        <h3>Add your comment</h3>
+        <input
+          type="text"
+          name="user-name"
+          id="user-name"
+          placeholder="Your name"
+        />
+
+        <textarea
+          name="comment-message"
+          id="comment-message"
+          placeholder="Your insights"
+        ></textarea>
+        <input type="submit" value="Comment" id="submit-comment" />
+      </form>
+    </section>
+
     <footer>
       <p>&copy; Created by <strong>let's Chill</strong> uderer cc licence</p>
     </footer>
