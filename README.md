@@ -56,11 +56,11 @@ Live site URL to Webpack basic setup
 - Twitter: [@nemwel_bonie](https://twitter.com/nemwel_bonie)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/nemwel-nyandoro-aa1b2620b/)
 
-👤 **Author2**
+👤 **Zelalem Mekonnen**
 
-- GitHub: [@Zelalem ](https://github.com/zmekonnen251)
-- Twitter: [@Zelalem ]()
-- LinkedIn: [LinkedIn]()
+- GitHub: [GitHub](https://github.com/zmekonnen251)
+- Twitter: [Twitter](https://twitter.com/mek_zela)
+- LinkedIn: [Zelalem G. Mekonnen](https://www.linkedin.com/in/zelalem-getachew/)
 
 ## 🤝 Contributing
 
