@@ -64,7 +64,7 @@ body {
   font-size: 19px;
 }
 
-.nav ul li {
+li {
   list-style-type: none;
   margin-right: 20px;
 }
@@ -138,6 +138,99 @@ body {
 .movieBtn button {
   padding: 7px;
   margin: 20px 15px;
+}
+
+/* Comment popup section */
+
+.comment-main-container {
+  position: fixed;
+  top: 0;
+  background-color: rgba(230, 230, 230, 0.9);
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 50px 0;
+}
+
+.comment-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.x-icon {
+  position: fixed;
+  width: 35px;
+  top: 20px;
+  right: 70px;
+}
+
+.summary {
+  width: 50%;
+  text-align: center;
+  padding: 5px;
+  line-height: 1.45rem;
+}
+
+form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 50px auto;
+}
+
+form h3 {
+  align-self: center;
+  padding: 1rem 0;
+}
+
+input[type='text'] {
+  width: 200px;
+  padding: 3px;
+  border: 2px solid black;
+}
+
+textarea {
+  width: 250px;
+  height: 100px;
+  border: 2px solid black;
+  padding: 5px;
+}
+
+input[type='submit'] {
+  width: fit-content;
+  font-weight: bold;
+  padding: 5px;
+  letter-spacing: 2px;
+  font-size: 1.4rem;
+  border: 2px solid black;
+  box-shadow: 5px 5px 2px black;
+}
+
+input::placeholder {
+  font-weight: bold;
+}
+
+.orginal-image {
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.blur-50vh {
+  filter: blur(5px);
+  height: 50vh;
+  overflow-y: hidden;
+}
+
+.blur {
+  filter: blur(15px);
+}
+
+.dn {
+  display: none;
 }
 
 /* Footer section  */
