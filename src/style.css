@@ -9,6 +9,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
+body {
+  position: relative;
+  height: 100vw;
+}
+
 .header {
   width: 100%;
   padding: 20px;
@@ -78,4 +83,13 @@
   border-radius: 50%;
   position: relative;
   bottom: 15px;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid black;
+  padding: 1rem;
 }
