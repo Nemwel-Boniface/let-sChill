@@ -1,16 +1,14 @@
 import './style.css';
 
-let randomID;
-const url = `https://api.tvmaze.com/shows/`;
+const url = 'https://api.tvmaze.com/shows/';
 
 const movieWrapper = document.querySelector('.image-container');
 const testMovie = async (url) => {
-
   movieWrapper.innerHTML = '';
-  for(let i = 700; i < 709; i += 1) {
-  await fetch(url + i)
-    .then((response) => response.json())
-    .then((result) => {
+  for (let i = 720; i < 729; i += 1) {
+    fetch(url + i)
+      .then((response) => response.json())
+      .then((result) => {
         movieWrapper.innerHTML = `${movieWrapper.innerHTML}
         <div class="movie" id="${i}">
           <img src="${result.image.medium}" alt="movie">
@@ -27,7 +25,7 @@ const testMovie = async (url) => {
             <button class="reservations" type="button">Reservations</button>
           </div>
         </div>`;
-    });
+      });
   }
 };
 testMovie(url);
