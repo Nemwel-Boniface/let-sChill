@@ -1,31 +1,37 @@
 /* This is a project done by Nemwel and Zelalem */
+
 /* We designed it with a desktop first approach to design */
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
 .header {
   width: 100%;
   padding: 20px;
   border: 1px solid #000;
 }
+
 .header .nav {
   margin: 0 10%;
   display: flex;
   justify-content: space-between;
 }
+
 .nav a {
   text-decoration: none;
 }
+
 .nav a h2 {
   font-family: 'Mochiy Pop One', sans-serif;
   animation: bouge 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   animation-iteration-count: 1;
   transform: translateX(0);
 }
+
 @keyframes bouge {
   10%,
   90% {
@@ -48,19 +54,23 @@
     transform: translateX(4px);
   }
 }
+
 .nav ul {
   display: flex;
   font-size: 19px;
 }
+
 .nav ul li {
   list-style-type: none;
   margin-right: 20px;
 }
+
 .nav ul li a {
   text-decoration: none;
 }
+
 .nav ul li a span {
-  background-color: #FF0000;
+  background-color: #f00;
   margin-left: 2px;
   padding: 2px;
   font-size: 15px;
