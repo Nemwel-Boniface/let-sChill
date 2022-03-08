@@ -3,7 +3,7 @@
 # Let's Chill
 Let's Chill is a web application that generates random movies from the tv Maze API. More information about the API can be found [here](https://www.tvmaze.com/api)
 
-![screenshot](./images/letsChill.png)
+![screenshot](./src/images/letsChill.png)
 
 
 ## Built With
