@@ -1,21 +1,21 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Webpack Setup
+# Let's Chill
+Let's Chill is a web application that generates random movies from the tv Maze API. More information about the API can be found [here](https://www.tvmaze.com/api)
 
-> Webpack is an open-source JavaScript module bundler. It is made primarily for JavaScript, but it can transform front-end assets such as HTML, CSS, and images if the corresponding loaders are included. webpack takes modules with dependencies and generates static assets representing those modules.
-> Further information can be found [here](https://en.wikipedia.org/wiki/Webpack)
+![screenshot](./src/images/letsChill.png)
 
 
 ## Built With
 
-- node_modules
+- npm node_modules
 - Webpack
-- lodash
-- basic HTML, CSS, JavaScript
+- tv-Maze API
+- HTML, CSS, JavaScript
 
 ## Live Demo
 Live site URL to Webpack basic setup
-[Live Demo Link](https://nemwel-boniface.github.io/WebpackSetUp/)
+[Live Demo Link](https://nemwel-boniface.github.io/openSourceLibrary/)
 
 
 ## Getting Started
@@ -34,7 +34,7 @@ Live site URL to Webpack basic setup
 ### Install
 
 - Open your command prompt or terminal and run.
-- git clone git@github.com:Nemwel-Boniface/WebpackSetUp.git .
+- git@github.com:Nemwel-Boniface/openSourceLibrary.git .
 
 
 ### Run tests
@@ -56,12 +56,17 @@ Live site URL to Webpack basic setup
 - Twitter: [@nemwel_bonie](https://twitter.com/nemwel_bonie)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/nemwel-nyandoro-aa1b2620b/)
 
+👤 **Author2**
+
+- GitHub: [@Zelalem ](https://github.com/zmekonnen251)
+- Twitter: [@Zelalem ]()
+- LinkedIn: [LinkedIn]()
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Nemwel-Boniface/WebpackSetUp/issues).
+Feel free to check the [issues page](https://github.com/Nemwel-Boniface/openSourceLibrary/issues).
 
 ## Show your support
 
