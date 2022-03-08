@@ -1,51 +1,126 @@
 import './style.css';
+import xIcon from './images/x-icon.png';
 
 const url = 'https://api.tvmaze.com/shows/';
 
 const movieWrapper = document.querySelector('.image-container');
+const commentWraper = document.querySelector('.comment-main-container');
+
 const testMovie = async (url) => {
-  movieWrapper.innerHTML = '';
+  // movieWrapper.innerHTML = '';
   for (let i = 20; i < 29; i += 1) {
     fetch(url + i)
       .then((response) => response.json())
       .then((result) => {
         const movie = document.createElement('div');
+        movie.classList.add('movie');
+        movie.id = i;
+
+        const img = document.createElement('img');
+        img.alt = 'Movie Image';
+
         const movieDes = document.createElement('div');
+        movieDes.classList.add('movieDesc');
+
         const movieDesTop = document.createElement('div');
-        const movieBtn = document.createElement('div');
-        const likesP = document.createElement('p');
-        const likeSpan = document.createElement('span');
+        movieDesTop.classList.add('movieDescTop');
+
+        const movieTitle = document.createElement('p');
+        movieTitle.textContent = result.name;
+        movieTitle.style.fontWeight = 'bold';
+        movieTitle.style.fontSize = '1.5rem';
 
         const like = document.createElement('a');
         const icon = document.createElement('i');
         icon.classList.add('fa', 'fa-heart');
 
-        likesP.textContent = 'Likes';
+        const likesP = document.createElement('p');
+        const likeSpan = document.createElement('span');
         likeSpan.textContent = 2;
-        likesP.append(likeSpan, 'like');
-        like.append(icon, likeSpan);
 
-        movie.classList.add('movie');
-        movieDes.classList.add('movieDesc');
-        movieDesTop.classList.add('movieDescTop');
+        likesP.append(likeSpan, 'likes');
+        like.appendChild(icon);
 
-        movie.id = i;
-        const img = document.createElement('img');
-        const title = document.createElement('h3');
+        const movieBtn = document.createElement('div');
+        movieBtn.classList.add('movieBtn');
+
         const genere = document.createElement('p');
         const summary = document.createElement('p');
         const comment = document.createElement('button');
         const reservation = document.createElement('button');
-        title.textContent = result.name;
+
+        summary.classList.add('summary');
+
         genere.textContent = result.genres;
         comment.textContent = 'Comment';
-
         reservation.textContent = 'Reservation';
 
+        comment.addEventListener('click', () => {
+          document.querySelector('main').classList.toggle('blur-50vh');
+          document.querySelector('footer').classList.toggle('blur');
+
+          const closeIcon = new Image();
+          closeIcon.classList.add('x-icon');
+
+          closeIcon.src = xIcon;
+
+          closeIcon.addEventListener('click', () => {
+            commentWraper.innerHTML = '';
+            document.querySelector('main').classList.toggle('blur-50vh');
+            document.querySelector('footer').classList.toggle('blur');
+            window.location.reload();
+          });
+
+          const commentContainer = document.createElement('div');
+          commentContainer.classList.add('comment-container');
+          const commentListContainer = document.createElement('div');
+          const commentsCounter = document.createElement('h3');
+          commentsCounter.style.textAlign = 'center';
+          commentsCounter.style.margin = '20px 0';
+
+          const commentLists = document.createElement('ul');
+          commentLists.classList.add('comment-lists');
+          const commentListItem1 = document.createElement('li');
+          const commentListItem2 = document.createElement('li');
+          const commentListItem3 = document.createElement('li');
+
+          commentListItem1.innerHTML = '03/11/2021 Alex:I\'d love to buy it!';
+          commentListItem2.innerHTML = '03/11/2021 Alex:I\'d love to buy it!';
+          commentListItem3.innerHTML = '03/11/2021 Alex:I\'d love to buy it!';
+
+          commentLists.append(
+            commentListItem1,
+            commentListItem2,
+            commentListItem3,
+          );
+
+          commentsCounter.innerHTML = 'Comments(2)';
+          commentListContainer.append(commentsCounter, commentLists);
+
+          commentContainer.classList.add('comment-container');
+          const orginalImg = document.createElement('img');
+          orginalImg.src = result.image.original;
+          orginalImg.classList.add('orginal-image');
+          movieTitle.textContent = result.name;
+          genere.textContent = result.genres;
+
+          summary.innerHTML = result.summary;
+          summary.style.fontStyle = 'italic';
+          commentContainer.append(
+            orginalImg,
+            movieTitle,
+            genere,
+            summary,
+            commentListContainer,
+          );
+          commentContainer.appendChild(closeIcon);
+          document.querySelector('form').classList.toggle('dn');
+          commentWraper.prepend(commentContainer);
+        });
         movieBtn.append(comment, reservation);
         img.src = result.image.medium;
-        movieDesTop.append(title, like);
-        movieDes.append(movieDesTop);
+        movieDesTop.append(movieTitle, like);
+        movieDes.append(movieDesTop, likesP);
 
         movie.append(img, movieDes, movieBtn);
         movieWrapper.appendChild(movie);
