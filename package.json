@@ -4,7 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --env=jsdom",
+    "watch": "jest watch *.js",
     "start": "webpack serve --open",
     "build": "webpack"
   },
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/Nemwel-Boniface/WebpackSetUp#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.6.0",
     "eslint": "^7.32.0",
@@ -38,6 +40,9 @@
     "webpack-dev-server": "^4.7.4"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.2",
+    "jest-dom": "^4.0.0",
+    "jsdom": "^19.0.0",
     "lodash": "^4.17.21"
   }
 }

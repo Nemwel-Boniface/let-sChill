@@ -6,6 +6,8 @@ import {
   addCommentToInvolvement,
 } from './modules/toInvolvementAPI.js';
 
+import { commentCounterFunc } from './modules/commentCounter.js';
+
 const baseMovieURL = 'https://api.tvmaze.com/shows/';
 const involvementLikes = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/likes/';
 const involvementComments = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/comments/';
@@ -99,13 +101,13 @@ const testMovie = async (baseMovieURL) => {
 
           const commentLists = document.createElement('ul');
           commentLists.classList.add('comment-lists');
-          let commentCounter;
+          let commentCount;
 
           fetch(`${involvementComments}?item_id=${i}`, { method: 'GET' })
             .then((response) => response.json())
             .then((result) => {
-              commentCounter = result.length;
-              commentsCounter.innerHTML = `Comments (${commentCounter})`;
+              commentCount = commentCounterFunc(result);
+              commentsCounter.innerHTML = `Comments (${commentCount})`;
               result.forEach((commentItem) => {
                 const commentListItem = document.createElement('li');
                 commentListItem.innerHTML = `<time>${commentItem.creation_date}</time> <span>${commentItem.username}</span> : <span>${commentItem.comment}</span>`;
@@ -142,8 +144,8 @@ const testMovie = async (baseMovieURL) => {
           commentSubmitBtn.addEventListener('click', (event) => {
             event.preventDefault();
             if (usernameInput.value !== '' && commentInput.value !== '') {
-              commentCounter += 1;
-              commentsCounter.innerHTML = `Comments (${commentCounter})`;
+              commentCount += 1;
+              commentsCounter.innerHTML = `Comments (${commentCount})`;
               const username = usernameInput.value;
               const comment = commentInput.value;
 
