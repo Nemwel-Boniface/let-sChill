@@ -1,21 +1,16 @@
 import './style.css';
 import xIcon from './images/x-icon.png';
-import { result } from 'lodash';
 import addToInvolvement from './modules/toInvolvementAPI.js';
 
 const baseMovieURL = 'https://api.tvmaze.com/shows/';
-const involvementID = 'IiSu15JW6SgjFyni4ntZ';
-const involvementURL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${involvementID}/`;
-export const involvementLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/likes/`;
+const involvementLikes = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/likes/';
 
 const movieWrapper = document.querySelector('.image-container');
 const commentWraper = document.querySelector('.comment-main-container');
-let likesReturn = [];
 
 const testMovie = async (baseMovieURL) => {
-console.log(result.likes)
   for (let i = 20; i < 29; i += 1) {
-    await fetch(baseMovieURL + i)
+    fetch(baseMovieURL + i)
       .then((response) => response.json())
       .then((result) => {
         const movie = document.createElement('div');
@@ -48,22 +43,20 @@ console.log(result.likes)
 
         let clicked;
         fetch(involvementLikes, { method: 'GET' })
-           .then((response) => response.json())
-            .then((result) => {
+          .then((response) => response.json())
+          .then((result) => {
             const filteredResult = result.filter(
-            (r) => r.item_id === `${i}`
-           );
-          likeSpan.textContent = filteredResult[0].likes;
-          clicked = filteredResult[0].likes;
-          console.log(filteredResult);
+              (r) => r.item_id === `${i}`,
+            );
+            likeSpan.textContent = filteredResult[0].likes;
+            clicked = filteredResult[0].likes;
           });
 
         like.addEventListener('click', () => {
           clicked += 1;
           addToInvolvement(involvementLikes, movie.id, clicked);
           likeSpan.textContent = clicked;
-          console.log(`Movie ${movie.id} was touched`);
-        })
+        });
 
         const movieBtn = document.createElement('div');
         movieBtn.classList.add('movieBtn');
@@ -152,7 +145,8 @@ console.log(result.likes)
   }
 };
 
-
-document.addEventListener('DOMContentLoaded', (e) => {
+document.addEventListener('DOMContentLoaded', () => {
   testMovie(baseMovieURL);
-})
+});
+
+export default involvementLikes;

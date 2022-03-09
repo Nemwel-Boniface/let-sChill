@@ -5,12 +5,11 @@ const addToInvolvement = async (involvementLikes, index, clicked) => {
       'Content-type': 'application/json; charset=UTF-8',
     },
     body: JSON.stringify({
-      'item_id': index,
-      'likes': clicked,
-    })
+      item_id: index,
+      likes: clicked,
+    }),
   })
-  .then((response) => response.text())
-    .then((response) => console.log(response))
-}
+    .then((response) => response.text());
+};
 
 export default addToInvolvement;
