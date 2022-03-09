@@ -1,15 +1,17 @@
 import './style.css';
 import xIcon from './images/x-icon.png';
+import { result } from 'lodash';
 
 const baseMovieURL = 'https://api.tvmaze.com/shows/';
 const involvementID = 'IiSu15JW6SgjFyni4ntZ';
 const involvementURL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${involvementID}/`;
-const involvementLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IiSu15JW6SgjFyni4ntZ/likes/`;
+const involvementLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/likes/`;
 
 const movieWrapper = document.querySelector('.image-container');
 const commentWraper = document.querySelector('.comment-main-container');
+let likesReturn = [];
 
-const addToAPI = async (index, clicked) => {
+const addToInvolvement = async (index, clicked) => {
   await fetch(involvementLikes, {
     method: 'POST',
     headers: {
@@ -17,7 +19,7 @@ const addToAPI = async (index, clicked) => {
     },
     body: JSON.stringify({
       'item_id': index,
-      likes: clicked,
+      'likes': clicked,
     })
   })
   .then((response) => response.text())
@@ -25,9 +27,9 @@ const addToAPI = async (index, clicked) => {
 }
 
 const testMovie = async (baseMovieURL) => {
+console.log(result.likes)
   for (let i = 20; i < 29; i += 1) {
-    // const fromAPI = await getFromAPI(involvementLikes)
-    fetch(baseMovieURL + i)
+    await fetch(baseMovieURL + i)
       .then((response) => response.json())
       .then((result) => {
         const movie = document.createElement('div');
@@ -52,19 +54,27 @@ const testMovie = async (baseMovieURL) => {
         const icon = document.createElement('i');
         icon.classList.add('fa', 'fa-heart');
 
-        let clicked = 1;
-
         const likesP = document.createElement('p');
         const likeSpan = document.createElement('span');
-        likeSpan.textContent = clicked;
 
         likesP.append(likeSpan, ' likes');
         like.appendChild(icon);
 
+        let clicked;
+        fetch(involvementLikes, { method: 'GET' })
+           .then((response) => response.json())
+            .then((result) => {
+            const filteredResult = result.filter(
+            (r) => r.item_id === `${i}`
+           );
+          likeSpan.textContent = filteredResult[0].likes;
+          clicked = filteredResult[0].likes;
+          console.log(filteredResult);
+          });
 
         like.addEventListener('click', () => {
           clicked += 1;
-          addToAPI(movie.id, clicked);
+          addToInvolvement(movie.id, clicked);
           likeSpan.textContent = clicked;
           console.log(`Movie ${movie.id} was touched`);
         })
@@ -155,5 +165,9 @@ const testMovie = async (baseMovieURL) => {
       });
   }
 };
-testMovie(baseMovieURL);
 
+
+document.addEventListener('DOMContentLoaded', (e) => {
+  testMovie(baseMovieURL);
+  // getFromInvolvement();
+})
