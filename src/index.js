@@ -1,15 +1,16 @@
 import './style.css';
 import xIcon from './images/x-icon.png';
+import addToInvolvement from './modules/toInvolvementAPI.js';
 
-const url = 'https://api.tvmaze.com/shows/';
+const baseMovieURL = 'https://api.tvmaze.com/shows/';
+const involvementLikes = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/likes/';
 
 const movieWrapper = document.querySelector('.image-container');
 const commentWraper = document.querySelector('.comment-main-container');
 
-const testMovie = async (url) => {
-  // movieWrapper.innerHTML = '';
+const testMovie = async (baseMovieURL) => {
   for (let i = 20; i < 29; i += 1) {
-    fetch(url + i)
+    fetch(baseMovieURL + i)
       .then((response) => response.json())
       .then((result) => {
         const movie = document.createElement('div');
@@ -36,10 +37,26 @@ const testMovie = async (url) => {
 
         const likesP = document.createElement('p');
         const likeSpan = document.createElement('span');
-        likeSpan.textContent = 2;
 
-        likesP.append(likeSpan, 'likes');
+        likesP.append(likeSpan, ' likes');
         like.appendChild(icon);
+
+        let clicked;
+        fetch(involvementLikes, { method: 'GET' })
+          .then((response) => response.json())
+          .then((result) => {
+            const filteredResult = result.filter(
+              (r) => r.item_id === `${i}`,
+            );
+            likeSpan.textContent = filteredResult[0].likes;
+            clicked = filteredResult[0].likes;
+          });
+
+        like.addEventListener('click', () => {
+          clicked += 1;
+          addToInvolvement(involvementLikes, movie.id, clicked);
+          likeSpan.textContent = clicked;
+        });
 
         const movieBtn = document.createElement('div');
         movieBtn.classList.add('movieBtn');
@@ -127,4 +144,9 @@ const testMovie = async (url) => {
       });
   }
 };
-testMovie(url);
+
+document.addEventListener('DOMContentLoaded', () => {
+  testMovie(baseMovieURL);
+});
+
+export default involvementLikes;
