@@ -1,30 +1,16 @@
 import './style.css';
 import xIcon from './images/x-icon.png';
 import { result } from 'lodash';
+import addToInvolvement from './modules/toInvolvementAPI.js';
 
 const baseMovieURL = 'https://api.tvmaze.com/shows/';
 const involvementID = 'IiSu15JW6SgjFyni4ntZ';
 const involvementURL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${involvementID}/`;
-const involvementLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/likes/`;
+export const involvementLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/likes/`;
 
 const movieWrapper = document.querySelector('.image-container');
 const commentWraper = document.querySelector('.comment-main-container');
 let likesReturn = [];
-
-const addToInvolvement = async (index, clicked) => {
-  await fetch(involvementLikes, {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-    body: JSON.stringify({
-      'item_id': index,
-      'likes': clicked,
-    })
-  })
-  .then((response) => response.text())
-    .then((response) => console.log(response))
-}
 
 const testMovie = async (baseMovieURL) => {
 console.log(result.likes)
@@ -74,7 +60,7 @@ console.log(result.likes)
 
         like.addEventListener('click', () => {
           clicked += 1;
-          addToInvolvement(movie.id, clicked);
+          addToInvolvement(involvementLikes, movie.id, clicked);
           likeSpan.textContent = clicked;
           console.log(`Movie ${movie.id} was touched`);
         })
@@ -169,5 +155,4 @@ console.log(result.likes)
 
 document.addEventListener('DOMContentLoaded', (e) => {
   testMovie(baseMovieURL);
-  // getFromInvolvement();
 })
