@@ -169,7 +169,8 @@ const testMovie = async (baseMovieURL) => {
         movieWrapper.appendChild(movie);
       });
   }
-  let movieCounter = document.getElementById('movieCount').innerHTML = movieCount;
+  const movieCounter = document.getElementById('movieCount');
+  movieCounter.innerHTML = movieCount;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
