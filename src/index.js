@@ -1,15 +1,33 @@
 import './style.css';
 import xIcon from './images/x-icon.png';
 
-const url = 'https://api.tvmaze.com/shows/';
+const baseMovieURL = 'https://api.tvmaze.com/shows/';
+const involvementID = 'IiSu15JW6SgjFyni4ntZ';
+const involvementURL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${involvementID}/`;
+const involvementLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/IiSu15JW6SgjFyni4ntZ/likes/`;
 
 const movieWrapper = document.querySelector('.image-container');
 const commentWraper = document.querySelector('.comment-main-container');
 
-const testMovie = async (url) => {
-  // movieWrapper.innerHTML = '';
+const addToAPI = async (index, clicked) => {
+  await fetch(involvementLikes, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    body: JSON.stringify({
+      'item_id': index,
+      likes: clicked,
+    })
+  })
+  .then((response) => response.text())
+    .then((response) => console.log(response))
+}
+
+const testMovie = async (baseMovieURL) => {
   for (let i = 20; i < 29; i += 1) {
-    fetch(url + i)
+    // const fromAPI = await getFromAPI(involvementLikes)
+    fetch(baseMovieURL + i)
       .then((response) => response.json())
       .then((result) => {
         const movie = document.createElement('div');
@@ -34,12 +52,22 @@ const testMovie = async (url) => {
         const icon = document.createElement('i');
         icon.classList.add('fa', 'fa-heart');
 
+        let clicked = 1;
+
         const likesP = document.createElement('p');
         const likeSpan = document.createElement('span');
-        likeSpan.textContent = 2;
+        likeSpan.textContent = clicked;
 
-        likesP.append(likeSpan, 'likes');
+        likesP.append(likeSpan, ' likes');
         like.appendChild(icon);
+
+
+        like.addEventListener('click', () => {
+          clicked += 1;
+          addToAPI(movie.id, clicked);
+          likeSpan.textContent = clicked;
+          console.log(`Movie ${movie.id} was touched`);
+        })
 
         const movieBtn = document.createElement('div');
         movieBtn.classList.add('movieBtn');
@@ -127,4 +155,5 @@ const testMovie = async (url) => {
       });
   }
 };
-testMovie(url);
+testMovie(baseMovieURL);
+
