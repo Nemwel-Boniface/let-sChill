@@ -1,5 +1,5 @@
-const addToInvolvement = async (involvementLikes, index, clicked) => {
-  await fetch(involvementLikes, {
+const addToInvolvement = (involvementLikes, index, clicked) => {
+  fetch(involvementLikes, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
@@ -12,13 +12,13 @@ const addToInvolvement = async (involvementLikes, index, clicked) => {
     .then((response) => response.text());
 };
 
-const addCommentToInvolvement = async (
+const addCommentToInvolvement = (
   involvementComments,
   index,
   username,
   comment,
 ) => {
-  await fetch(involvementComments, {
+  fetch(involvementComments, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
