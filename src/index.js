@@ -1,10 +1,14 @@
 import './style.css';
 import xIcon from './images/x-icon.png';
-import addToInvolvement from './modules/toInvolvementAPI.js';
+
+import {
+  addToInvolvement,
+  addCommentToInvolvement,
+} from './modules/toInvolvementAPI.js';
 
 const baseMovieURL = 'https://api.tvmaze.com/shows/';
 const involvementLikes = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/likes/';
-
+const involvementComments = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/comments/';
 const movieWrapper = document.querySelector('.image-container');
 const commentWraper = document.querySelector('.comment-main-container');
 
@@ -45,9 +49,7 @@ const testMovie = async (baseMovieURL) => {
         fetch(involvementLikes, { method: 'GET' })
           .then((response) => response.json())
           .then((result) => {
-            const filteredResult = result.filter(
-              (r) => r.item_id === `${i}`,
-            );
+            const filteredResult = result.filter((r) => r.item_id === `${i}`);
             likeSpan.textContent = filteredResult[0].likes;
             clicked = filteredResult[0].likes;
           });
@@ -97,21 +99,20 @@ const testMovie = async (baseMovieURL) => {
 
           const commentLists = document.createElement('ul');
           commentLists.classList.add('comment-lists');
-          const commentListItem1 = document.createElement('li');
-          const commentListItem2 = document.createElement('li');
-          const commentListItem3 = document.createElement('li');
+          let commentCounter;
 
-          commentListItem1.innerHTML = '03/11/2021 Alex:I\'d love to buy it!';
-          commentListItem2.innerHTML = '03/11/2021 Alex:I\'d love to buy it!';
-          commentListItem3.innerHTML = '03/11/2021 Alex:I\'d love to buy it!';
+          fetch(`${involvementComments}?item_id=${i}`, { method: 'GET' })
+            .then((response) => response.json())
+            .then((result) => {
+              commentCounter = result.length;
+              commentsCounter.innerHTML = `Comments (${commentCounter})`;
+              result.forEach((commentItem) => {
+                const commentListItem = document.createElement('li');
+                commentListItem.innerHTML = `<time>${commentItem.creation_date}</time> <span>${commentItem.username}</span> : <span>${commentItem.comment}</span>`;
+                commentLists.appendChild(commentListItem);
+              });
+            });
 
-          commentLists.append(
-            commentListItem1,
-            commentListItem2,
-            commentListItem3,
-          );
-
-          commentsCounter.innerHTML = 'Comments(2)';
           commentListContainer.append(commentsCounter, commentLists);
 
           commentContainer.classList.add('comment-container');
@@ -133,6 +134,29 @@ const testMovie = async (baseMovieURL) => {
           commentContainer.appendChild(closeIcon);
           document.querySelector('form').classList.toggle('dn');
           commentWraper.prepend(commentContainer);
+
+          const usernameInput = document.querySelector('#user-name');
+          const commentInput = document.querySelector('#comment-message');
+          const commentSubmitBtn = document.querySelector('#submit-comment');
+
+          commentSubmitBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            if (usernameInput.value !== '' && commentInput.value !== '') {
+              commentCounter += 1;
+              commentsCounter.innerHTML = `Comments (${commentCounter})`;
+              const username = usernameInput.value;
+              const comment = commentInput.value;
+
+              addCommentToInvolvement(
+                involvementComments,
+                i,
+                username,
+                comment,
+              );
+            }
+            usernameInput.value = '';
+            commentInput.value = '';
+          });
         });
         movieBtn.append(comment, reservation);
         img.src = result.image.medium;
