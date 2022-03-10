@@ -65,8 +65,6 @@ const testMovie = async (baseMovieURL) => {
           clicked += 1;
           addToInvolvement(involvementLikes, movie.id, clicked);
           likeSpan.textContent = clicked;
-          like.style.color = 'black';
-          like.style.fontSize = '23px';
         });
 
         const movieBtn = document.createElement('div');
@@ -102,6 +100,7 @@ const testMovie = async (baseMovieURL) => {
           const commentContainer = document.createElement('div');
           commentContainer.classList.add('comment-container');
           const commentListContainer = document.createElement('div');
+          commentListContainer.classList.add('comment-list-container');
           const commentsCounter = document.createElement('h3');
           commentsCounter.style.textAlign = 'center';
           commentsCounter.style.margin = '20px 0';
@@ -117,7 +116,7 @@ const testMovie = async (baseMovieURL) => {
               commentsCounter.innerHTML = `Comments (${commentCount})`;
               result.forEach((commentItem) => {
                 const commentListItem = document.createElement('li');
-                commentListItem.innerHTML = `<time>${commentItem.creation_date}</time> <span>${commentItem.username}</span> : <span>${commentItem.comment}</span>`;
+                commentListItem.innerHTML = `<strong><time>${commentItem.creation_date}</time> <span>${commentItem.username}</span></strong> : <span>${commentItem.comment}</span>`;
                 commentLists.appendChild(commentListItem);
               });
             });

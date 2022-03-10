@@ -189,6 +189,7 @@ li {
   height: 100vh;
   overflow-y: scroll;
   padding: 50px 0;
+  z-index: 2;
 }
 
 .comment-container {
@@ -197,6 +198,13 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* width: 800px;
+  border: 2px solid black;
+  margin: 0 auto; */
+}
+
+.comment-list-container {
+  width: 500px;
 }
 
 .x-icon {
@@ -293,4 +301,29 @@ footer a {
 footer a:hover {
   color: rgb(93, 25, 25);
   font-size: 20px;
+}
+
+/* Mobile-responsive */
+
+@media screen and (max-width: 692px) {
+  /* Comment popup */
+
+  .x-icon {
+    right: 35px;
+  }
+
+  .comment-list-container {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  .comment-form-container {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  form h3 {
+    align-self: normal;
+    text-align: justify;
+  }
 }
