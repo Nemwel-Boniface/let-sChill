@@ -1,12 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
-</head>
-<body>
-    <h1>Hello webpack!</h1>
-    <p>Hello I am Nemwel.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- font awesome icons -->
+
+    <link
+      rel="stylesheet"
+      href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!--Google fonts Mochiy pop one, poppins-->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Let's Chill</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <a href="#"><h2>Lets Chill</h2></a>
+        <ul class="mobileoff">
+          <li>
+            <a href="#">Movies<span id="movieCount">6</span></a>
+          </li>
+          <li class="mobileoff"><a href="#">About</a></li>
+          <li class="mobileoff"><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main">
+      <div class="image-container"></div>
+    </main>
+
+    <section class="comment-main-container dn">
+      <div class="comment-form-container">
+        <form action="POST" class="comment-form dn">
+          <h3>Add your comment</h3>
+          <input
+            type="text"
+            name="user-name"
+            id="user-name"
+            placeholder="Your name"
+          />
+
+          <textarea
+            name="comment-message"
+            id="comment-message"
+            placeholder="Your insights"
+          ></textarea>
+          <input type="submit" value="Comment" id="submit-comment" />
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        &copy; Created by
+        <a href="https://www.linkedin.com/in/nemwel-nyandoro-aa1b2620b/"
+          >Nemwel</a
+        >
+        and
+        <a href="https://www.linkedin.com/in/zelalem-g-mekonnen/ ">Zelalem</a>
+        under cc licence
+      </p>
+    </footer>
+  </body>
 </html>
