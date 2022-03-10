@@ -21,6 +21,7 @@ body {
   padding: 20px;
   background-color: #110a0a;
   z-index: 1;
+  /* margin-bottom: 260px; */
 }
 
 .header .nav {
@@ -91,8 +92,9 @@ li {
 
 /* Styling for the individual cards section */
 .main {
+  position: relative;
+  top: 80px;
   margin: 4% 10%;
-  margin-top: 100px;
 }
 
 .image-container {
@@ -106,7 +108,7 @@ li {
   flex-direction: column;
   gap: 20px;
   position: relative;
-  border: 1px solid #000;
+  border-radius: 9px;
   padding: 12px;
   transition: transform 0.5s;
   background-color: rgb(93, 25, 25);
@@ -130,6 +132,21 @@ li {
 .movieDescTop {
   display: flex;
   justify-content: space-between;
+}
+
+.movieDescTop a {
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.movieDescTop a:hover {
+  color: #000;
+  border: 2px aolid #fff;
+}
+
+.movieDescTop a:active {
+  color: #000;
+  border: 2px aolid #fff;
 }
 
 .movieDesc > p {
@@ -259,9 +276,21 @@ input::placeholder {
 
 /* Footer section  */
 footer {
-  margin-top: 100px;
+  margin-top: 140px;
   width: 100%;
   text-align: center;
-  border-top: 1px solid black;
   padding: 1rem;
+  background-color: #000;
+  color: #fff;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+  transition: 0.5s;
+}
+
+footer a:hover {
+  color: rgb(93, 25, 25);
+  font-size: 20px;
 }

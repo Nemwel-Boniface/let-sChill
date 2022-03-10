@@ -65,6 +65,8 @@ const testMovie = async (baseMovieURL) => {
           clicked += 1;
           addToInvolvement(involvementLikes, movie.id, clicked);
           likeSpan.textContent = clicked;
+          like.style.color = 'black';
+          like.style.fontSize = '23px';
         });
 
         const movieBtn = document.createElement('div');
