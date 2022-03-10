@@ -11,11 +11,13 @@ const involvementLikes = 'https://us-central1-involvement-api.cloudfunctions.net
 const involvementComments = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/comments/';
 const movieWrapper = document.querySelector('.image-container');
 const commentWraper = document.querySelector('.comment-main-container');
-let movieCount = 0;
+const movieCount = [];
+
+const countAllMovies = () => movieCount.length;
 
 const testMovie = async (baseMovieURL) => {
   for (let i = 20; i < 30; i += 1) {
-    movieCount += 1;
+    movieCount.push(i);
     fetch(baseMovieURL + i)
       .then((response) => response.json())
       .then((result) => {
@@ -170,7 +172,7 @@ const testMovie = async (baseMovieURL) => {
       });
   }
   const movieCounter = document.getElementById('movieCount');
-  movieCounter.innerHTML = movieCount;
+  movieCounter.innerHTML = countAllMovies();
 };
 
 document.addEventListener('DOMContentLoaded', () => {
