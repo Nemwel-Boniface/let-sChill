@@ -39,7 +39,6 @@ const testMovie = async (baseMovieURL) => {
         const movieTitle = document.createElement('p');
         movieTitle.textContent = result.name;
         movieTitle.style.fontWeight = 'bold';
-        movieTitle.style.fontSize = '1.5rem';
 
         const like = document.createElement('a');
         const icon = document.createElement('i');
@@ -81,6 +80,7 @@ const testMovie = async (baseMovieURL) => {
         reservation.textContent = 'Reservation';
 
         comment.addEventListener('click', () => {
+          commentWraper.classList.remove('dn');
           document.querySelector('main').classList.toggle('blur-50vh');
           document.querySelector('footer').classList.toggle('blur');
 
@@ -90,7 +90,7 @@ const testMovie = async (baseMovieURL) => {
           closeIcon.src = xIcon;
 
           closeIcon.addEventListener('click', () => {
-            commentWraper.innerHTML = '';
+            commentWraper.classList.add('dn');
             document.querySelector('main').classList.toggle('blur-50vh');
             document.querySelector('footer').classList.toggle('blur');
             window.location.reload();
@@ -99,6 +99,7 @@ const testMovie = async (baseMovieURL) => {
           const commentContainer = document.createElement('div');
           commentContainer.classList.add('comment-container');
           const commentListContainer = document.createElement('div');
+          commentListContainer.classList.add('comment-list-container');
           const commentsCounter = document.createElement('h3');
           commentsCounter.style.textAlign = 'center';
           commentsCounter.style.margin = '20px 0';
@@ -114,7 +115,7 @@ const testMovie = async (baseMovieURL) => {
               commentsCounter.innerHTML = `Comments (${commentCount})`;
               result.forEach((commentItem) => {
                 const commentListItem = document.createElement('li');
-                commentListItem.innerHTML = `<time>${commentItem.creation_date}</time> <span>${commentItem.username}</span> : <span>${commentItem.comment}</span>`;
+                commentListItem.innerHTML = `<strong><time>${commentItem.creation_date}</time> <span>${commentItem.username}</span></strong> : <span>${commentItem.comment}</span>`;
                 commentLists.appendChild(commentListItem);
               });
             });
