@@ -14,6 +14,10 @@ body {
   background-color: #4e4e4e;
 }
 
+.desktopoff {
+  display: none;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -306,7 +310,52 @@ footer a:hover {
 /* Mobile-responsive */
 
 @media screen and (max-width: 692px) {
+  /* Movies section */
+
+  .mobileoff {
+    display: none;
+  }
+  .nav ul {
+    display: block;
+  }
+  .image-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main {
+    position: relative;
+    top: 140px;
+    bottom: 50px;
+    margin-bottom: 170px;
+  }
+  .image-container .movie img {
+    max-width: 100%;
+  }
+
+  .movieDescTop a {
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+  .movieDesc > p {
+    position: absolute;
+    right: 0;
+    margin-bottom: 15px;
+  }
+
+  .movieBtn button {
+    padding: 7px;
+    width: 100%;
+    font-size: 16px;
+    transition: 1.5s;
+  }
+
+
   /* Comment popup */
+  .comment-main-container {
+    display: none;
+  }
 
   .x-icon {
     right: 35px;
