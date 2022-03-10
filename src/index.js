@@ -17,10 +17,6 @@ const movieWrapper = document.querySelector('.image-container');
 const commentWraper = document.querySelector('.comment-main-container');
 const movieCount = [];
 
-// const countAllMovies = () => movieCount.length;
-
-// module.exports = countAllMovies;
-
 const testMovie = async (baseMovieURL) => {
   for (let i = 20; i < 32; i += 1) {
     movieCount.push(i);
@@ -186,6 +182,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 export default involvementLikes;
-
-
-
