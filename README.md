@@ -18,18 +18,12 @@ Let's Chill is a web application that generates random movies from the tv Maze A
 - Library : `Webpack`
 - Technologies used: `GitHub`
 - [tv-Maze API](https://www.tvmaze.com/api)                                                                                       
-- [involvement API](https://www.notion.so/microverse/Involvement-API-869e60b5ad104603aa6db59e08150270)                                                                                                                              
-                                                                                                                                   
-## Built With
-
-- npm node_modules
-- Webpack
-- 
-- HTML, CSS, JavaScript
+- [involvement API](https://www.notion.so/microverse/Involvement-API-869e60b5ad104603aa6db59e08150270)                                                                                                                         
 
 ## Live Demo
 Live site URL to Webpack basic setup
-[Live Demo Link](https://happy-payne-5d37ab.netlify.app/)
+[Live Demo Link](https://mystifying-haibt-69e737.netlify.app/)
+A Video demo for the project can be viewed [here](https://drive.google.com/file/d/1ECyKPCocCK91e6i0JuKVxaWbsmQsgL88/view?usp=sharing)                    
 
 ### Prerequisites
 
@@ -48,13 +42,13 @@ Live site URL to Webpack basic setup
 
 - To run tests run : npm run test
 - npx hint .
-- npx stylelint "**/*.{css,scss}"
+- npx stylelint "**/*.{css,scss}"                                
                                                                                                                                
                                                                                                                                     
 ### Install
 
 - Open your command prompt or terminal and run.
-- git@github.com: Nemwel-Boniface/openSourceLibrary.git .
+- git@github.com:Nemwel-Boniface/let-sChill.git .
 
 ### Deployment
 
@@ -78,7 +72,7 @@ Live site URL to Webpack basic setup
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Nemwel-Boniface/openSourceLibrary/issues).
+Feel free to check the [issues page](https://github.com/Nemwel-Boniface/let-sChill/issues).
 
 ## Show your support
 
