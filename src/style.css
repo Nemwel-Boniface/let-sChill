@@ -14,7 +14,7 @@ body {
   background-color: #4e4e4e;
 }
 
-.desktopoff {
+.desktopoff, .navmobile {
   display: none;
 }
 
@@ -315,8 +315,8 @@ footer a:hover {
   .mobileoff {
     display: none;
   }
-  .nav ul {
-    display: block;
+  .nav a {
+    font-size: 14px;
   }
   .image-container {
     display: flex;
@@ -354,7 +354,7 @@ footer a:hover {
 
   /* Comment popup */
   .comment-main-container {
-    display: none;
+    /* display: none; */
   }
 
   .x-icon {
