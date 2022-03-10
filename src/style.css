@@ -14,7 +14,8 @@ body {
   background-color: #4e4e4e;
 }
 
-.desktopoff, .navmobile {
+.desktopoff,
+.navmobile {
   display: none;
 }
 
@@ -25,6 +26,7 @@ body {
   padding: 20px;
   background-color: #110a0a;
   z-index: 1;
+
   /* margin-bottom: 260px; */
 }
 
@@ -32,6 +34,12 @@ body {
   margin: 0 10%;
   display: flex;
   justify-content: space-between;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
+  transition: 0.5s;
 }
 
 .nav a {
@@ -77,6 +85,26 @@ body {
 li {
   list-style-type: none;
   margin-right: 20px;
+}
+
+.movieDescTop a {
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+/* Footer section  */
+footer {
+  margin-top: 140px;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background-color: #000;
+  color: #fff;
+}
+
+footer a:hover {
+  color: rgb(93, 25, 25);
+  font-size: 20px;
 }
 
 .nav ul li a {
@@ -138,19 +166,14 @@ li {
   justify-content: space-between;
 }
 
-.movieDescTop a {
-  cursor: pointer;
-  transition: 0.5s;
-}
-
 .movieDescTop a:hover {
   color: #000;
-  border: 2px aolid #fff;
+  border: 2px solid #fff;
 }
 
 .movieDescTop a:active {
   color: #000;
-  border: 2px aolid #fff;
+  border: 2px solid #fff;
 }
 
 .movieDesc > p {
@@ -179,6 +202,7 @@ li {
   font-size: 1.1rem;
   transition: 1.5s;
 }
+
 .movieBtn button:hover {
   background-color: black;
   color: white;
@@ -202,9 +226,6 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* width: 800px;
-  border: 2px solid black;
-  margin: 0 auto; */
 }
 
 .comment-list-container {
@@ -286,27 +307,6 @@ input::placeholder {
   display: none;
 }
 
-/* Footer section  */
-footer {
-  margin-top: 140px;
-  width: 100%;
-  text-align: center;
-  padding: 1rem;
-  background-color: #000;
-  color: #fff;
-}
-
-footer a {
-  color: #fff;
-  text-decoration: underline;
-  transition: 0.5s;
-}
-
-footer a:hover {
-  color: rgb(93, 25, 25);
-  font-size: 20px;
-}
-
 /* Mobile-responsive */
 
 @media screen and (max-width: 692px) {
@@ -315,9 +315,11 @@ footer a:hover {
   .mobileoff {
     display: none;
   }
+
   .nav a {
     font-size: 14px;
   }
+
   .image-container {
     display: flex;
     flex-direction: column;
@@ -329,6 +331,7 @@ footer a:hover {
     bottom: 50px;
     margin-bottom: 170px;
   }
+
   .image-container .movie img {
     max-width: 100%;
   }
@@ -351,10 +354,10 @@ footer a:hover {
     transition: 1.5s;
   }
 
-
   /* Comment popup */
-  .comment-main-container {
-    /* display: none; */
+  .summary {
+    width: 70%;
+    text-align: center;
   }
 
   .x-icon {
