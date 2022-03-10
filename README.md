@@ -15,7 +15,7 @@ Let's Chill is a web application that generates random movies from the tv Maze A
 
 ## Live Demo
 Live site URL to Webpack basic setup
-[Live Demo Link](https://nemwel-boniface.github.io/openSourceLibrary/)
+[Live Demo Link](https://happy-payne-5d37ab.netlify.app/)
 
 
 ## Getting Started
