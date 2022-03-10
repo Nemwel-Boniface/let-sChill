@@ -8,6 +8,8 @@ import {
 
 import { commentCounterFunc } from './modules/commentCounter.js';
 
+import { countAllMovies } from './modules/movieCounter.js';
+
 const baseMovieURL = 'https://api.tvmaze.com/shows/';
 const involvementLikes = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/likes/';
 const involvementComments = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/ADIK65sjpCXvzrCJe3B4/comments/';
@@ -15,10 +17,8 @@ const movieWrapper = document.querySelector('.image-container');
 const commentWraper = document.querySelector('.comment-main-container');
 const movieCount = [];
 
-const countAllMovies = () => movieCount.length;
-
 const testMovie = async (baseMovieURL) => {
-  for (let i = 20; i < 30; i += 1) {
+  for (let i = 20; i < 32; i += 1) {
     movieCount.push(i);
     fetch(baseMovieURL + i)
       .then((response) => response.json())
@@ -174,7 +174,7 @@ const testMovie = async (baseMovieURL) => {
       });
   }
   const movieCounter = document.getElementById('movieCount');
-  movieCounter.innerHTML = countAllMovies();
+  movieCounter.innerHTML = countAllMovies(movieCount);
 };
 
 document.addEventListener('DOMContentLoaded', () => {
